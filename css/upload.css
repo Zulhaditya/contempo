@@ -1,0 +1,77 @@
+.home-section .content {
+  background: url("../img/bg.png");
+  width: 160vh;
+  height: 110vh;
+}
+
+.content .main {
+  margin-top: 100px;
+  width: 648px;
+  height: 850px;
+  background: #141b25;
+  box-shadow: 17px 17px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.content .main .judul,
+.content .main .tema,
+.content .main .genre,
+.content .main .storyLagu,
+.content .main .uploadFile {
+  padding: 7px 30px 10px;
+  border-radius: 7px;
+}
+
+.judul label,
+.tema label,
+.genre label,
+.storyLagu label {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 20px;
+}
+
+.note-editor {
+  background: rgb(255, 255, 255);
+}
+
+#eventBtn {
+  background-color: #a16c70;
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  border-radius: 7px;
+  color: #fff;
+}
+
+#eventBtn:hover {
+  opacity: 0.7;
+}
+
+.uploadFile .upload {
+  background-color: #252934;
+  padding: 20px;
+  border-radius: 15px;
+}
+.main .custom-file-label {
+  color: white;
+  margin-right: 140px;
+  margin-left: -50px;
+}
+
+#inputGroupFile02 {
+  color: white;
+}
+
+.main .btnSave {
+  float: right;
+  margin-right: 50px;
+  width: 100px;
+  height: 50px;
+  background-color: #734548;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+}

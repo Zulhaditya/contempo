@@ -1,0 +1,125 @@
+/* Google Font Link */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-image: url("../img/bgLogin.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+}
+
+.title {
+  float: right;
+  margin-top: -180px;
+  margin-right: 100px;
+}
+.title h1 {
+  font-weight: bold;
+  color: white;
+  
+}
+.slogan {
+  margin-top: 228px;
+  margin-left: 300px;
+  color: #ffffff;
+  line-height: 70px;
+  
+}
+
+.slogan h1 {
+  font-size: 3.8em;
+}
+
+.login {
+  margin-top: 20px;
+  margin-left: 300px;
+  width: 150px;
+  height: 69px;
+  background-color: #252934;
+  box-shadow: 7px 7px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.register {
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 150px;
+  height: 69px;
+  background-color: #252934;
+  box-shadow: 7px 7px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.btn h1 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* login */
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 400px;
+  }
+}
+
+.modal-dialog .modal-content {
+  padding: 1rem;
+}
+
+.modal-header .close {
+  margin-top: -1.5rem;
+}
+
+.form-title {
+  margin: -2rem 0rem 2rem;
+}
+
+.btn-round {
+  border-radius: 3rem;
+}
+
+.delimiter {
+  padding: 1rem;
+}
+
+.social-buttons .btn {
+  margin: 0 0.5rem 1rem;
+}
+
+.signup-section {
+  padding: 0.3rem 0rem;
+}
+
+.btn h5 {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+
+.modal-dialog .modal-content {
+  background-color: #141b25;
+  color: white;
+  border-radius: 15px;
+}
+
+.form-group input {
+  margin-bottom: 25px;
+  height: 50px;
+}
+
+.close span {
+  color: white;
+}
+
+footer{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

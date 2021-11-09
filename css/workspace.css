@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+.content .tambahElement {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  left: 1050px;
+  top: 127px;
+  border-radius: 7px;
+}
+
+.content .tambahElement .btnTambah {
+  background-color: #734548;
+  width: 46px;
+  height: 46px;
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.content .tambahElement .btnTambah:hover {
+  opacity: 0.7;
+}
+
+.logoTambah h3 {
+  font-weight: bold;
+  position: absolute;
+  top: 2px;
+  right: 11px;
+}
+.home-section .content {
+  background-image: url("../img/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+
+  width: 160vh;
+  height: 100vh;
+}
+.content .main {
+  margin-top: 200px;
+  width: 648px;
+  height: 566px;
+  background: #141b25;
+  box-shadow: 17px 17px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+.main h4 {
+  color: white;
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  line-height: 70px;
+  padding-left: 30px;
+}
+
+.main .inputLirik {
+  padding: 0px 30px 10px;
+  height: 200px;
+  border-radius: 7px;
+}
+
+.main .inputNote {
+  padding: 10px 30px 10px;
+  height: 100px;
+  border-radius: 7px;
+}
+
+.main .uploadFile {
+  padding: 10px 30px 10px;
+  height: 70px;
+}
+
+.uploadFile .upload {
+  background-color: #252934;
+  padding: 10px;
+  height: 80px;
+  border-radius: 15px;
+}
+.main .custom-file-label {
+  color: white;
+  margin-right: 140px;
+  margin-left: -50px;
+}
+
+#inputGroupFile02 {
+  color: white;
+}
+
+.inputLirik textarea {
+  color: white;
+  background-color: white;
+}
+
+#eventBtn {
+  background-color: #a16c70;
+  position: absolute;
+  right: 20px;
+  bottom: 25px;
+  border-radius: 7px;
+  color: #fff;
+}
+.main .btnSave {
+  float: right;
+  margin-top: 30px;
+  margin-right: 50px;
+  width: 100px;
+  height: 50px;
+  background-color: #734548;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+}
+
+.note-editor {
+  background: rgb(255, 255, 255);
+}
+.note-toolbar {
+  border-bottom: 1px solid #000;
+}
