@@ -7,8 +7,8 @@
 
 $(document).ready(function () {
   $("#eventBtn").click(function () {
-    $(".main").clone().appendTo("#gas");
     
+    $(".main").clone().appendTo("#gas");
   });
 });
 

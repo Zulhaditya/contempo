@@ -33,9 +33,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left;
-
   width: 160vh;
-  height: 100vh;
+  height: 160vh;
 }
 .content .main {
   margin-top: 200px;

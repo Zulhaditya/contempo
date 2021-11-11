@@ -1,3 +1,5 @@
+<?php require_once("auth.php"); ?>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,8 +16,8 @@
     <!-- Sidebar CSS -->
     <link rel="stylesheet" href="css/sidebar.css" />
 
-    <!-- Dashboard CSS -->
-    <link rel="stylesheet" href="css/dashboard.css" />
+    <!-- Timeline CSS -->
+    <link rel="stylesheet" href="css/timeline.css" />
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -54,10 +56,10 @@
           <div class="profile-details">
             <img src="img/profile.jpg" alt="profileImg" />
             <div class="name_job">
-              <div class="name">Zulhaditya</div>
+              <div class="name"><?php echo  $_SESSION["user"]["name"] ?></div>
             </div>
           </div>
-          <i class="bx bx-log-out" id="log_out"></i>
+          <a href="index.php"><i class="bx bx-log-out" id="log_out"></i></a>
         </li>
       </ul>
     </div>
@@ -66,7 +68,7 @@
       <h1>Contempo</h1>
     </div>
     <div class="userName text-center">
-      <h1>Selamat datang, Zulhaditya</h1>
+      <h1>Selamat Datang, <?php echo  $_SESSION["user"]["name"] ?>.</h1>
     </div>
 
     <div class="wrapper">

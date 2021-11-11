@@ -1,9 +1,90 @@
+<?php
+
+require_once("config.php");
+if (isset($_POST['register'])){
+    // filter data yang diinputkan
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    // enkripsi password
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+
+    // menyiapkan query
+    $sql = "INSERT INTO users (name, username, email, password) 
+            VALUES (:name, :username, :email, :password)";
+    $stmt = $db->prepare($sql);
+
+    // bind parameter ke query
+    $params = array(
+        ":name" => $name,
+        ":username" => $username,
+        ":password" => $password,
+        ":email" => $email
+    );
+
+    // eksekusi query untuk menyimpan ke database
+    $saved = $stmt->execute($params);
+
+    // jika query simpan berhasil, maka user sudah terdaftar
+    // maka alihkan ke halaman login
+    if($saved) header("Location: index.php");
+}
+
+if(isset($_POST['login'])){
+
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+    $sql = "SELECT * FROM users WHERE username=:username OR email=:email";
+    $stmt = $db->prepare($sql);
+    
+    // bind parameter ke query
+    $params = array(
+        ":username" => $username,
+        ":email" => $username
+    );
+
+    $stmt->execute($params);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (empty($username)) {
+      header("location:index.php?error=Username wajib diisi");
+      exit();
+    }elseif (empty($password)) {
+      header("location:index.php?error=Password wajib diisi");
+      exit();
+    }
+    // jika user terdaftar
+    if($user){
+        // verifikasi password
+        if(password_verify($password, $user["password"])){
+            // buat Session
+            session_start();
+            $_SESSION["user"] = $user;
+            // login sukses, alihkan ke halaman timeline
+            header("Location: timeline.php");
+        }
+    }else {
+    header("location:index.php?error=Salah username atau password ya!");
+    exit();
+
+    }
+    
+}
+
+
+
+?>
+
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/loginRegister.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -72,26 +153,27 @@
               <h4>Login</h4>
             </div>
             <div class="d-flex flex-column text-center">
-              <form>
+              <form action="" method="POST">
                 <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
-                    id="email1"
-                    placeholder="Username"
+                    id="username"
+                    name="username"
+                    placeholder="Username atau email"
                   />
                 </div>
                 <div class="form-group">
                   <input
                     type="password"
                     class="form-control"
-                    id="password1"
+                    name="password"
+                    id="password"
                     placeholder="Password"
                   />
                 </div>
-                <button type="button" class="btn btn-secondary btn-round">
-                  <h5>Masuk</h5>
-                </button>
+                <input type="submit" class="btn btn-secondary btn-round" name="login" value="Masuk">
+                </input>
               </form>
             </div>
           </div>
@@ -129,34 +211,45 @@
               <h4>Register</h4>
             </div>
             <div class="d-flex flex-column text-center">
-              <form>
+              <form action="" method="POST">
                 <div class="form-group">
+                  <div class="form-group">
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
-                    id="email1"
-                    placeholder="E-mail"
+                    name="name"
+                    id="name"
+                    placeholder="Nama Kamu"
                   />
                 </div>
                 <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
-                    id="email1"
+                    name="username"
+                    id="username"
                     placeholder="Username"
+                  />
+                </div>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Alamat Email"
                   />
                 </div>
                 <div class="form-group">
                   <input
                     type="password"
                     class="form-control"
-                    id="password1"
+                    name="password"
+                    id="password"
                     placeholder="Password"
                   />
                 </div>
-                <button type="button" class="btn btn-secondary btn-round">
-                  <h5>Daftar</h5>
-                </button>
+                <input type="submit" class="btn btn-secondary btn-round" name="register" value="Daftar">
+                </input>
               </form>
             </div>
           </div>
