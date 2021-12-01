@@ -15,9 +15,8 @@ function menuBtnChange() {
   }
 }
 
-
-  $('#summernote').summernote({
-        placeholder: 'Tulis lirik dan progresi chord...',
-        tabsize: 2,
-        height: 100
-      });
+$("#summernote").summernote({
+  placeholder: "Tulis lirik dan progresi chord...",
+  tabsize: 2,
+  height: 100,
+});
