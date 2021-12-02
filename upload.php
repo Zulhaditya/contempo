@@ -1,22 +1,35 @@
 <?php
 require_once("auth.php");
-$koneksi = mysqli_connect("localhost","root","","db_fp") or die(mysqli_connect_errno());
-if (isset($_POST['uploadLagu'])){
-		$id = time();
-		$username = $_SESSION["user"]["name"];
-		$judulLagu = $_POST['judulLagu'];
-		$genreLagu = $_POST['genreLagu'];
-		$desc_lagu = $_POST['descLagu'];
-        $file_lagu = "Radiohead";
-		
-		if(!empty($username) && !empty($judulLagu) && !empty($genreLagu) && !empty($desc_lagu)){
-			$sql = "INSERT INTO upload_lagu (id,username,judul_lagu, genre_lagu, desc_lagu, file_lagu) VALUES(".$id.",'".$username."','".$judulLagu."','".$genreLagu."','".$desc_lagu."','".$file_lagu."')";
-			$simpan = mysqli_query($koneksi, $sql);
 
-		} else {
-			$pesan = "Tidak dapat menyimpan, data belum lengkap!";
-		}
-	}
+$judul_lagu = $_POST['judulLagu'];
+$genre_lagu = $_POST['genreLagu'];
+$desc_lagu = $_POST['descLagu'];
+
+if (isset($_POST['save_audio']) && $_POST['save_audio']=="Upload Audio") {
+    $dir='lagu/';
+    $audio_path=$dir.basename($_FILES['audioFile']['name']);
+    $username = $_SESSION["user"]["name"];
+    if (move_uploaded_file($_FILES['audioFile']['tmp_name'],$audio_path)) {
+        echo 'upload lagu sukses';
+        saveAudio($username,$judul_lagu,$genre_lagu,$desc_lagu,$audio_path);
+    }
+}
+
+function saveAudio($username, $judul_lagu, $genre_lagu, $desc_lagu, $file_lagu){
+    $koneksi = mysqli_connect("localhost","root","","db_fp") or die(mysqli_connect_errno());
+    if (!$koneksi) {
+        die('Server tidak terkoneksi');
+    }
+    $query = "INSERT INTO upload_lagu(username,judul_lagu,genre_lagu,desc_lagu,file_lagu)
+    values('{$username}','{$judul_lagu}','{$genre_lagu}','{$desc_lagu}','{$file_lagu}')";
+
+    mysqli_query($koneksi, $query);
+
+    if (mysqli_affected_rows($koneksi)>0) {
+        echo "File lagu telah disimpan di database";
+    }
+    mysqli_close($koneksi);
+}
 
 
 ?>
@@ -87,7 +100,7 @@ if (isset($_POST['uploadLagu'])){
         <div class="row">
             <div class="content col-md-auto" id="contentUtama">
                 <div class="main">
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <!-- input judul lagu -->
                         <div class="judul form-group">
                             <label for="judulLagu">Judul Lagu</label>
@@ -112,12 +125,12 @@ if (isset($_POST['uploadLagu'])){
                         <div class="uploadFile">
                             <div class="upload input-group mb-3">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
+                                    <input type="file" class="custom-file-input" id="inputGroupFile02" name="audioFile" />
                                     <label class="custom-file-label" for="inputGroupFile02">Choose
                                         file</label>
                                 </div>
 
-                                <input class="btn btn-outline-secondary btnUpload" type="submit" id="uploadLagu" name="uploadLagu">
+                                <input class="btn btn-outline-secondary btnUpload" type="submit" id="uploadLagu" name="save_audio" value="Upload Audio">
                                 
                             </input>
                             </div>

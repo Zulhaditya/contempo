@@ -27,6 +27,7 @@
             <th scope="col" class="w-25">Genre lagu</th>
             <th scope="col" class="w-25">Creator</th>
             <th scope="col" class="w-25">Mainkan</th>
+            <th scope="col" class="w-25">Durasi</th>
         </tr>
     </thead>
     <tbody>
@@ -57,7 +58,10 @@
                     <?php echo $result['username']; ?>
                 </td>
                 <td style="text-align: center;">
-                    <button id="EditButton" value="<?php echo $result['IdMhsw']; ?>">Play</button>
+                    <span class="play_btn"><img class="play_icon" src="img/play.png"><img class="pause_icon" src="img/pause.png"></span>
+                </td>
+                <td>
+                    <span class="track"><audio id="audio" controls><source src="<?php echo $result['file_lagu'] ?>" type="audio/mp3"></audio></span>
                 </td>
             </tr>
             <?php
