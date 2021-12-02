@@ -142,7 +142,7 @@ if (isset($_POST['uploadLagu'])){
 
                 <div class="dflex flex-column">
                     <div class="profile">
-                        <a href="timeline.php">
+                        <a href="project-user.php">
                             <img src="img/profile.png" alt="bg" width="228px" height="150px" class="mx-auto d-block" />
                         </a>
 

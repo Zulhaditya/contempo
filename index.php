@@ -64,7 +64,7 @@ if(isset($_POST['login'])){
             session_start();
             $_SESSION["user"] = $user;
             // login sukses, alihkan ke halaman timeline
-            header("Location: timeline.php");
+            header("Location: project-user.php");
         }
     }else {
     header("location:index.php?error=Salah username atau password ya!");

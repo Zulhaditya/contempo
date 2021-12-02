@@ -42,19 +42,18 @@ body {
 .workspace {
   /* background: url("../img/dashboard.png"); */
   /* background-color: #695765; */
-  border: .2px solid rgba(255, 255, 255, 0.781);
-  background-position:center center;
+  border: 0.2px solid rgba(255, 255, 255, 0.781);
+  background-position: center center;
   width: 400px;
   height: 100px;
   padding-top: 13px;
   padding-left: 20px;
   border-radius: 7px;
-  margin-bottom: 30px;
 }
 .workspace a {
   text-decoration: none;
   color: white;
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .workspace a:hover {
@@ -231,7 +230,7 @@ header h1 {
   display: none;
 }
 
-footer{
+footer {
   position: absolute;
   left: 0;
   right: 0;

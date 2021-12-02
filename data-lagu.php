@@ -25,7 +25,8 @@
             <th scope="col">No.</th>
             <th scope="col" class="w-25">Judul Lagu</th>
             <th scope="col" class="w-25">Genre lagu</th>
-            <th scope="col" class="w-50">Desc Lagu</th>
+            <th scope="col" class="w-25">Creator</th>
+            <th scope="col" class="w-25">Mainkan</th>
         </tr>
     </thead>
     <tbody>
@@ -51,14 +52,13 @@
                     <!-- <th scope="row">1</th> -->
                     <?php echo $result['genre_lagu']; ?>
                 </td>
-                <td>
+                <td style="text-align: center;">
                     <!-- <th scope="row">1</th> -->
-                    <?php echo $result['desc_lagu']; ?>
+                    <?php echo $result['username']; ?>
                 </td>
-                <!-- <td>
-                    <button id="EditButton" value="<?php echo $result['IdMhsw']; ?>">Edit</button>
-                    <button id="DeleteButton" value="<?php echo $result['IdMhsw']; ?>">Delete</button>
-                </td> -->
+                <td style="text-align: center;">
+                    <button id="EditButton" value="<?php echo $result['IdMhsw']; ?>">Play</button>
+                </td>
             </tr>
             <?php
    }

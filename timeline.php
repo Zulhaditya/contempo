@@ -47,14 +47,6 @@
                 <span class="tooltip">User</span>
             </li>
 
-             <li>
-                <a href="workspace-user.php">
-                    <i class="bx bx-user"></i>
-                    <span class="links_name">User</span>
-                </a>
-                <span class="tooltip">User</span>
-            </li>
-
             <li class="profile">
                 <div class="profile-details">
                     <img src="img/profile.jpg" alt="profileImg" />
