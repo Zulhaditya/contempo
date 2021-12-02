@@ -38,7 +38,7 @@ if (isset($_POST['uploadLagu'])){
     <link rel="stylesheet" href="css/sidebar.css" />
 
     <!-- Content CSS -->
-    <link rel="stylesheet" href="css/tes-upload.css" />
+    <link rel="stylesheet" href="css/clone-upload.css" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
@@ -86,7 +86,7 @@ if (isset($_POST['uploadLagu'])){
     <div class="home-section">
         <div class="row">
             <div class="content col-md-auto" id="contentUtama">
-                <div class="main mx-auto">
+                <div class="main">
                     <form action="" method="POST">
                         <!-- input judul lagu -->
                         <div class="judul form-group">
@@ -117,13 +117,15 @@ if (isset($_POST['uploadLagu'])){
                                         file</label>
                                 </div>
 
-
+                                <input class="btn btn-outline-secondary btnUpload" type="submit" id="uploadLagu" name="uploadLagu">
+                                
+                            </input>
                             </div>
+
+                             
                         </div>
 
-                        <input class="btn btn-outline-secondary btnUpload" type="submit" id="uploadLagu"
-                            name="uploadLagu">
-                        </input>
+                        
 
                     </form>
 

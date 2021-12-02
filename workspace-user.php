@@ -1,26 +1,4 @@
-<?php
-require_once("auth.php");
-$koneksi = mysqli_connect("localhost","root","","db_fp") or die(mysqli_connect_errno());
-if (isset($_POST['uploadWorkspace'])){
-		$id = time();
-		$username = $_SESSION["user"]["name"];
-		$workspace = $_POST['workspace'];
-		$note = $_POST['note'];
-        $title_lagu = "Radiohead";
-		
-		if(!empty($username) && !empty($workspace) && !empty($note)){
-			$sql = "INSERT INTO upload_workspace (username,workspace,note,title_lagu) VALUES('".$username."','".$workspace."','".$note."','".$file_lagu."')";
-			$simpan = mysqli_query($koneksi, $sql);
-
-		} else {
-			$pesan = "Tidak dapat menyimpan, data belum lengkap!";
-		}
-	}
-
-
-?>
-
-
+<?php require_once("auth.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,23 +11,51 @@ if (isset($_POST['uploadWorkspace'])){
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!-- Sidebar CSS -->
     <link rel="stylesheet" href="css/sidebar.css" />
 
     <!-- Content CSS -->
-    <link rel="stylesheet" href="css/clone-workspace.css" />
+    <link rel="stylesheet" href="css/workspace-user.css" />
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    
 
-    <title>Workspace</title>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+
+            // Load Data Lagu
+            loadData();
+
+            function loadData() {
+            $.ajax({
+                url: 'data-workspace.php',
+                type: 'get',
+                success: function(data) {
+                    $('#contentData').html(data);
+                }
+            });
+        }
+
+        });
+
+        
+
+    </script>
+
+    <title>Upload</title>
 </head>
 
 <body>
-    <div class="sidebar">
+
+
+<div class="sidebar">
         <div class="logo-details">
             <i class="bx bxl-c-plus-plus icon"></i>
             <div class="logo_name">Contempo</div>
@@ -77,61 +83,19 @@ if (isset($_POST['uploadWorkspace'])){
                 <div class="profile-details">
                     <img src="img/profile.jpg" alt="profileImg" />
                     <div class="name_job">
-                        <div class="name">Zulhaditya</div>
+                        <div class="name"><?php echo  $_SESSION["user"]["name"] ?></div>
                     </div>
                 </div>
-                <i class="bx bx-log-out" id="log_out"></i>
+                <a href="logout.php"><i class="bx bx-log-out" id="log_out"></i></a>
             </li>
         </ul>
     </div>
-
-    <div class="home-section">
+    
+     <div class="home-section">
         <div class="row">
             <div class="content col-md-auto" id="contentUtama">
-                <div class="tambahElement">
-                    <button class="btn btn-outline-secondary btnTambah" type="button">
-                        <div class="logoTambah text-center">
-                            <h3>+</h3>
-                        </div>
-                    </button>
-                </div>
                 <div class="main">
-                    <h4>Sabtu, 6 November 2021</h4>
-
-                     <form action="" method="POST">
-                         <!-- input workspace-->
-                        <div class="workspace form-group">
-                            <label for="workspace">Workspace</label>
-                            <textarea class="form-control" id="workspace" rows="7" name="workspace"></textarea>
-                        </div>
-                        <!-- input note -->
-                        <div class="note form-group">
-                            <label for="note">Note</label>
-                            <textarea type="text" class="form-control" id="note" rows="3" name="note"></textarea>
-                        </div>
-
-                        <!-- upload lagu -->
-                        <div class="uploadFile">
-                            <div class="upload input-group mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
-                                    <label class="custom-file-label" for="inputGroupFile02">Choose
-                                        file</label>
-                                </div>
-                                <input class="btn btn-outline-secondary btnUpload" type="submit" id="uploadWorkspace"
-                            name="uploadWorkspace">
-                                
-
-
-                            </div>
-                        </div>
-
-                        
-                        </input>
-
-                    </form>
-            
-
+                <div id="contentData" class="contentData"></div>
     
                 </div>
             </div>
@@ -188,9 +152,14 @@ if (isset($_POST['uploadWorkspace'])){
         </div>
         <!-- Copyright -->
     </footer>
+        
+            
+             
+    
 
-    <script src="js/workspace.js"></script>
     <script src="js/sidebar.js"></script>
+    
+
 </body>
 
 </html>

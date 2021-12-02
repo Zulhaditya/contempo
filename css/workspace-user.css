@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+.home-section .content {
+  background-color: #000000;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+  width: 160vh;
+  height: 100vh;
+}
+
+.content .main {
+  margin-top: 150px;
+  width: 120vh;
+  margin-left: 250px;
+  height: 566px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background: #141b25;
+  box-shadow: 17px 17px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}

@@ -1,6 +1,0 @@
-Table upload-lagu
-1. username (varchar)
-2. judul-lagu (varchar)
-3. genre-lagu (varchar)
-4. desc-lagu (varchar)
-5. file-lagu (mp3)
