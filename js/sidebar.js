@@ -14,9 +14,3 @@ function menuBtnChange() {
     closeBtn.classList.replace("bx-menu-alt-right", "bx-menu"); //replacing the iocns class
   }
 }
-
-$("#summernote").summernote({
-  placeholder: "Tulis lirik dan progresi chord...",
-  tabsize: 2,
-  height: 100,
-});

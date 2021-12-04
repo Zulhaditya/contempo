@@ -13,6 +13,16 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
+    <script>
+       window.addEventListener("play", function(evt){
+        if(window.$_currentlyPlaying && window.$_currentlyPlaying != evt.target){
+        window.$_currentlyPlaying.pause();
+     } 
+        window.$_currentlyPlaying = evt.target;
+}, true);
+    
+    </script>
+
 
 </head>
 
@@ -27,7 +37,6 @@
             <th scope="col" class="w-25">Genre lagu</th>
             <th scope="col" class="w-25">Creator</th>
             <th scope="col" class="w-25">Mainkan</th>
-            <th scope="col" class="w-25">Durasi</th>
         </tr>
     </thead>
     <tbody>
@@ -36,7 +45,8 @@
         include "koneksi.php";
         include "auth.php";
         $no = 1;
-        $query = mysqli_query($koneksi, "SELECT * FROM upload_lagu") or die(mysqli_error($koneksi));
+        $user = $_SESSION['user']['name'];
+        $query = mysqli_query($koneksi, "SELECT * FROM upload_lagu WHERE username='$user'") or die(mysqli_error($koneksi));
 
         while ($result=mysqli_fetch_array($query)) {
     ?>
@@ -57,11 +67,8 @@
                     <!-- <th scope="row">1</th> -->
                     <?php echo $result['username']; ?>
                 </td>
-                <td style="text-align: center;">
-                    <span class="play_btn"><img class="play_icon" src="img/play.png"><img class="pause_icon" src="img/pause.png"></span>
-                </td>
                 <td>
-                    <span class="track"><audio id="audio" controls><source src="<?php echo $result['file_lagu'] ?>" type="audio/mp3"></audio></span>
+                    <audio id="music" preload="true" controls><source src="<?php echo $result['file_lagu'] ?>" type="audio/mp3"></audio>
                 </td>
             </tr>
             <?php

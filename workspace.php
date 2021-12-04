@@ -1,26 +1,37 @@
 <?php
 require_once("auth.php");
-$koneksi = mysqli_connect("localhost","root","","db_fp") or die(mysqli_connect_errno());
-if (isset($_POST['uploadWorkspace'])){
-		$id = time();
-		$username = $_SESSION["user"]["name"];
-		$workspace = $_POST['workspace'];
-		$note = $_POST['note'];
-        $title_lagu = "Radiohead";
-		
-		if(!empty($username) && !empty($workspace) && !empty($note)){
-			$sql = "INSERT INTO upload_workspace (username,workspace,note,title_lagu) VALUES('".$username."','".$workspace."','".$note."','".$file_lagu."')";
-			$simpan = mysqli_query($koneksi, $sql);
 
-		} else {
-			$pesan = "Tidak dapat menyimpan, data belum lengkap!";
-		}
-	}
+$workspace = $_POST['workspace'];
+$note = $_POST['note'];
 
+if (isset($_POST['save_audio']) && $_POST['save_audio']=="Upload Audio") {
+    $dir='lagu/';
+    $audio_path=$dir.basename($_FILES['audioFile']['name']);
+    $username = $_SESSION["user"]["name"];
+    if (move_uploaded_file($_FILES['audioFile']['tmp_name'],$audio_path)) {
+        echo 'upload lagu sukses';
+        saveAudio($username,$workspace,$note,$audio_path);
+    }
+}
 
+function saveAudio($username, $workspace, $note, $file_lagu){
+    $koneksi = mysqli_connect("localhost","root","","db_fp") or die(mysqli_connect_errno());
+    if (!$koneksi) {
+        die('Server tidak terkoneksi');
+    }
+    
+    $query = "INSERT INTO upload_workspace(username,workspace,note,file_lagu)
+    values('{$username}','{$workspace}','{$note}','{$file_lagu}')";
+
+    mysqli_query($koneksi, $query);
+
+    if (mysqli_affected_rows($koneksi)>0) {
+        echo "File lagu telah disimpan di database";
+        
+    }
+    mysqli_close($koneksi);
+}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +44,6 @@ if (isset($_POST['uploadWorkspace'])){
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
     <!-- Sidebar CSS -->
     <link rel="stylesheet" href="css/sidebar.css" />
@@ -58,7 +67,7 @@ if (isset($_POST['uploadWorkspace'])){
 
         <ul class="nav list">
             <li>
-                <a href="timeline.php">
+                <a href="project-user.php">
                     <i class="bx bx-grid-alt"></i>
                     <span class="links_name">Dashboard</span>
                 </a>
@@ -98,8 +107,8 @@ if (isset($_POST['uploadWorkspace'])){
                 <div class="main">
                     <h4>Sabtu, 6 November 2021</h4>
 
-                     <form action="" method="POST">
-                         <!-- input workspace-->
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        <!-- input workspace-->
                         <div class="workspace form-group">
                             <label for="workspace">Workspace</label>
                             <textarea class="form-control" id="workspace" rows="7" name="workspace"></textarea>
@@ -114,25 +123,23 @@ if (isset($_POST['uploadWorkspace'])){
                         <div class="uploadFile">
                             <div class="upload input-group mb-3">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile02" />
+                                    <input type="file" class="custom-file-input" id="inputGroupFile02"
+                                        name="audioFile" />
                                     <label class="custom-file-label" for="inputGroupFile02">Choose
                                         file</label>
                                 </div>
                                 <input class="btn btn-outline-secondary btnUpload" type="submit" id="uploadWorkspace"
-                            name="uploadWorkspace">
-                                
-
-
+                                    name="save_audio" value="Upload Audio">
                             </div>
                         </div>
 
-                        
+
                         </input>
 
                     </form>
-            
 
-    
+
+
                 </div>
             </div>
 
@@ -188,8 +195,6 @@ if (isset($_POST['uploadWorkspace'])){
         </div>
         <!-- Copyright -->
     </footer>
-
-    <script src="js/workspace.js"></script>
     <script src="js/sidebar.js"></script>
 </body>
 

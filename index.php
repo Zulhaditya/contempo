@@ -42,7 +42,7 @@ if(isset($_POST['login'])){
     // bind parameter ke query
     $params = array(
         ":username" => $username,
-        ":email" => $username
+        ":email" => $email
     );
 
     $stmt->execute($params);
@@ -108,7 +108,7 @@ if(isset($_POST['login'])){
     </div>
 
     <button type="button" class="login btn btn-dark" data-toggle="modal" data-target="#loginModal">
-        <h1>Login</h1>
+        <h1>Masuk</h1>
     </button>
 
     <button type="button" class="register btn btn-secondary" data-toggle="modal" data-target="#registerModal">
@@ -126,7 +126,7 @@ if(isset($_POST['login'])){
                 </div>
                 <div class="modal-body">
                     <div class="form-title text-center">
-                        <h4>Login</h4>
+                        <h4>Masuk</h4>
                     </div>
                     <div class="d-flex flex-column text-center">
                         <form action="" method="POST">

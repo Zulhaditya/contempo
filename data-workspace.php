@@ -13,32 +13,46 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
 
+    <script>
+    window.addEventListener("play", function(evt) {
+        if (window.$_currentlyPlaying && window.$_currentlyPlaying != evt.target) {
+            window.$_currentlyPlaying.pause();
+        }
+        window.$_currentlyPlaying = evt.target;
+    }, true);
+    </script>
+
 
 </head>
 
 <body>
-<br>
-<br>
-<table class="table table-dark table-hover align-middle caption-top">
-    <caption>Workspace</caption>
-    <thead>
-        <tr style="text-align: center;">
-            <th scope="col">No.</th>
-            <th scope="col" class="w-50">Lirik dan Progresi Chord</th>
-            <th scope="col" class="w-25">Catatan</th>
-            <th scope="col" class="w-25">File Lagu</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Hapus</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
+
+    <br>
+    <br>
+    <table class="table table-dark table-hover align-middle caption-top">
+        <caption>Workspace</caption>
+        <thead>
+            <tr style="text-align: center;">
+                <th scope="col">No.</th>
+                <th scope="col" class="w-50">Lirik dan Progresi Chord</th>
+                <th scope="col" class="w-25">Catatan</th>
+                <th scope="col" class="w-25">File Lagu</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Hapus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
 
         include "koneksi.php";
         include "auth.php";
+        include "auth-workspace.php";
+        
+        $id = $_SESSION['workspace']['id'];
         $no = 1;
-        $query = mysqli_query($koneksi, "SELECT * FROM upload_workspace") or die(mysqli_error($koneksi));
-
+        $user = $_SESSION['user']['name'];
+        $query = mysqli_query($koneksi, "SELECT * FROM upload_workspace WHERE username='$user'") or die(mysqli_error($koneksi));
+        
         while ($result=mysqli_fetch_array($query)) {
     ?>
 
@@ -55,22 +69,23 @@
                     <?php echo $result['note']; ?>
                 </td>
                 <td>
-                    <!-- <th scope="row">1</th> -->
-                    <?php echo $result['title_lagu']; ?>
+                    <audio id="music" preload="true" controls>
+                        <source src="<?php echo $result['file_lagu'] ?>" type="audio/mp3">
+                    </audio>
                 </td>
-                
+
                 <td>
-                    <button id="EditButton" type="button" class="btn btn-primary" value="<?php echo $result['IdMhsw']; ?>">Edit</button>
+                    <button id="EditButton" type="button" class="btn btn-primary"><a href="update.php?updateid=<?php echo $result['id']; ?>" class="text-light" style="text-decoration: none;">Edit</a></button>
                 </td>
                 <td>
-                    <button id="DeleteButton" type="button" class="btn btn-danger" value="<?php echo $result['IdMhsw']; ?>">Delete</button>
+                    <button id="DeleteButton" type="button" class="btn btn-danger" class="text-light"><a href="delete.php?deleteid=<?php echo $result['id']; ?>" class="text-light" style="text-decoration: none;">Delete</a></button>
                 </td>
             </tr>
             <?php
    }
   ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
 </body>
 
