@@ -122,7 +122,7 @@ function saveAudio($id,$username, $workspace, $note, $file_lagu){
                             <label for="workspace">Workspace</label>
                             <textarea class="form-control" id="workspace" rows="7" name="workspace"><?php echo $hasilWorkspace ?></textarea>
                         </div>
-                        <!-- input note -->
+                        
                         <div class="note form-group">
                             <label for="note">Note</label>
                             <textarea type="text" class="form-control" id="note" rows="3" name="note"><?php echo $hasilNote ?></textarea>
