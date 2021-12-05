@@ -26,8 +26,8 @@ function saveAudio($username, $workspace, $note, $file_lagu){
     mysqli_query($koneksi, $query);
 
     if (mysqli_affected_rows($koneksi)>0) {
-        echo "File lagu telah disimpan di database";
-        
+        echo '<script type="text/javascript">
+        window.onload = function () { alert("Berhasil upload!"); }</script>';
     }
     mysqli_close($koneksi);
 }
@@ -155,7 +155,7 @@ function saveAudio($username, $workspace, $note, $file_lagu){
                         </a>
 
                         <div class="title-profile text-center">
-                            <a href="timeline.php">
+                            <a href="project-user.php">
                                 <h4>Profile</h4>
                             </a>
                         </div>

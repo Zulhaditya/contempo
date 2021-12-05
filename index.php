@@ -28,7 +28,7 @@ if (isset($_POST['register'])){
 
     // jika query simpan berhasil, maka user sudah terdaftar
     // maka alihkan ke halaman login
-    if($saved) header("Location: index.php");
+    if($saved)header("Location: index.php");
 }
 
 if(isset($_POST['login'])){
@@ -67,8 +67,9 @@ if(isset($_POST['login'])){
             header("Location: project-user.php");
         }
     }else {
-    header("location:index.php?error=Salah username atau password ya!");
-    exit();
+            echo '<script type="text/javascript">
+            window.onload = function () { alert("Anda Belum Mendaftar!"); }</script>';
+
 
     }
 
@@ -145,7 +146,7 @@ if(isset($_POST['login'])){
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <div class="signup-section">
-                        Belum punya akun ? <a href="#a" class="text-info">Daftar</a>.
+                        Belum punya akun ? <a data-target="#registerModal" data-toggle="modal" data-dismiss="modal" href="#registerModal" class="text-info">Daftar</a>.
                     </div>
                 </div>
             </div>
@@ -190,7 +191,7 @@ if(isset($_POST['login'])){
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <div class="signup-section">
-                        Sudah punya akun ? <a href="#a" class="text-info">Login</a>.
+                        Sudah punya akun ? <a data-target="#loginModal" data-toggle="modal" data-dismiss="modal" href="#loginModal" class="text-info">Login</a>.
                     </div>
                 </div>
             </div>

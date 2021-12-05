@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/sidebar.css" />
 
     <!-- Timeline CSS -->
-    <link rel="stylesheet" href="css/clone-timeline.css" />
+    <link rel="stylesheet" href="css/timeline.css" />
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
@@ -108,24 +108,17 @@
 
 
 
-    <div class="container">
+    <div class="container content">
         <div id="contentData"></div>
 
     </div>
 
-    <footer class="bg-dark text-center text-white">
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2021 Copyright
-        </div>
-        <!-- Copyright -->
-    </footer>
+    
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="js/sidebar.js"></script>
-    <!-- <script src="js/data.js"></script>
-    <script src="js/dashboard.js"></script> -->
+    
 
 </body>
 

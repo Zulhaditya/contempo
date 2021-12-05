@@ -6,16 +6,20 @@
   background-size: cover;
   background-position: left;
   width: 160vh;
-  height: 100vh;
+  max-height: fit-content;
+  
 }
+
 
 .content .main {
   margin-top: 150px;
+  margin-bottom: 150px;
   width: 120vh;
   margin-left: 250px;
-  height: 566px;
+  max-height: fit-content;
   padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 30px;
   background: #141b25;
   box-shadow: 17px 17px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;

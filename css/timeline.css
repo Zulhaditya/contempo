@@ -29,14 +29,16 @@ body {
   margin-top: 120px;
   color: #ffffff;
   opacity: 0.5;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 /* main dashboard */
 .container {
   width: 100%;
   max-width: 1140px;
+  max-height: fit-content;
   margin: 0 auto;
+  
 }
 
 .workspace {
@@ -84,9 +86,10 @@ header h1 {
   color: #fff;
 }
 
-.body_content {
-  margin-top: 20px;
+.content{
+  margin-bottom: 100px;
 }
+
 
 .body_content .listLagu {
   background: #414072;
@@ -135,7 +138,7 @@ header h1 {
   background: #0d0d1f;
   border: 1px solid transparent;
   border-radius: 10px;
-  margin-top: 25px;
+  
   display: flex;
   align-items: center;
 }
@@ -231,8 +234,6 @@ header h1 {
 }
 
 footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  
 }
+

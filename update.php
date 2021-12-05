@@ -19,7 +19,6 @@ if (isset($_POST['save_audio']) && $_POST['save_audio']=="Upload Audio") {
     $audio_path=$dir.basename($_FILES['audioFile']['name']);
     $username = $_SESSION["user"]["name"];
     if (move_uploaded_file($_FILES['audioFile']['tmp_name'],$audio_path)) {
-        echo 'upload lagu sukses';
         saveAudio($id,$username,$workspace,$note,$audio_path);
     }
 }

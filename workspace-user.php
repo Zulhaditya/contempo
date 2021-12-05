@@ -50,7 +50,7 @@ mysqli_close($koneksi);
     <link rel="stylesheet" href="css/sidebar.css" />
 
     <!-- Content CSS -->
-    <link rel="stylesheet" href="css/workspace-user.css" />
+    <link rel="stylesheet" href="css/workspace.css" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -123,7 +123,6 @@ mysqli_close($koneksi);
             <div class="content col-md-auto" id="contentUtama">
                 <div class="main">
                     <div id="contentData" class="contentData"></div>
-
                 </div>
             </div>
 
@@ -134,12 +133,12 @@ mysqli_close($koneksi);
 
                 <div class="dflex flex-column">
                     <div class="profile">
-                        <a href="timeline.php">
+                        <a href="project-user.php">
                             <img src="img/profile.png" alt="bg" width="228px" height="150px" class="mx-auto d-block" />
                         </a>
 
                         <div class="title-profile text-center">
-                            <a href="timeline.php">
+                            <a href="project-user.php">
                                 <h4>Profile</h4>
                             </a>
                         </div>

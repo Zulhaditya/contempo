@@ -10,7 +10,7 @@ if (isset($_POST['save_audio']) && $_POST['save_audio']=="Upload Audio") {
     $audio_path=$dir.basename($_FILES['audioFile']['name']);
     $username = $_SESSION["user"]["name"];
     if (move_uploaded_file($_FILES['audioFile']['tmp_name'],$audio_path)) {
-        echo 'upload lagu sukses';
+        
         saveAudio($username,$judul_lagu,$genre_lagu,$desc_lagu,$audio_path);
     }
 }
@@ -26,7 +26,8 @@ function saveAudio($username, $judul_lagu, $genre_lagu, $desc_lagu, $file_lagu){
     mysqli_query($koneksi, $query);
 
     if (mysqli_affected_rows($koneksi)>0) {
-        echo "File lagu telah disimpan di database";
+        echo '<script type="text/javascript">
+        window.onload = function () { alert("Berhasil upload!"); }</script>';
     }
     mysqli_close($koneksi);
 }
