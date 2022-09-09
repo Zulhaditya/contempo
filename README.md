@@ -29,7 +29,7 @@
 - Save to database locally.
 
 ## Screenshots
-![Example screenshot](./img/personal-note.png)
+![Example screenshot](./img/dashboard.png)
 
 ## Setup
 To run this project, install it locally using npm:
@@ -49,12 +49,7 @@ Room for improvement:
 - Beautify the appearance of the website with css.
 
 To do:
-- Add data records to database.
-- Edit notes.
-
-## Acknowledgements
-- This project was based on [this course](https://www.dicoding.com/)
-- Many thanks to **Dicoding Indonesia**
+- Save data records to online database.
 
 ## Contact
 Created by [@Zulhaditya](https://itsmyportofolio.netlify.app/) - feel free to contact me!
