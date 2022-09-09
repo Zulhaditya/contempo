@@ -32,13 +32,8 @@
 ![Example screenshot](./img/dashboard.png)
 
 ## Setup
-To run this project, install it locally using npm:
+To run this project, install it locally using xampp and add mysql database.
 
-```
-$ cd ../personal-notes
-$ npm install
-$ npm start
-```
 ## Project Status
 Project is: _in progress_ <!-- / _complete_ / _no longer being worked on_. reason ? -->
 
