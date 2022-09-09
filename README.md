@@ -32,7 +32,7 @@
 ![Example screenshot](./img/dashboard.png)
 
 ## Setup
-To run this project, install it locally using xampp and add mysql database.
+To run this project, install it locally using XAMPP and add MySQL database.
 
 ## Project Status
 Project is: _in progress_ <!-- / _complete_ / _no longer being worked on_. reason ? -->
