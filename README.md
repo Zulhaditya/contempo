@@ -21,11 +21,11 @@
 - CSS - version 3
 
 ## Features
-- Login and Register.
-- Workspace for manage a project.
-- Add notes, lyrics, and sample songs.
+- Login and Register
+- Workspace for manage a project
+- Add notes, lyrics, and sample songs
 - Edit project
-- Save to database locally.
+- Save to database locally
 
 ## Screenshots
 ![Example screenshot](./img/dashboard.png)
@@ -34,7 +34,7 @@
 To run this project, install it locally using XAMPP and add MySQL database.
 
 ## Project Status
-Project is: _in progress_ <!-- / _complete_ / _no longer being worked on_. reason ? -->
+Project is: _in progress._ <!-- / _complete_ / _no longer being worked on_. reason ? -->
 
 ## Room for Improvement
 
