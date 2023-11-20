@@ -46,4 +46,5 @@ To do:
 - Save data records to online database.
 
 ## Contact
-Created by [@Zulhaditya](https://itsmyportofolio.netlify.app/) - feel free to contact me!
+
+Created by [@Zulhaditya](https://zulhaditya.vercel.app) - feel free to contact me!
